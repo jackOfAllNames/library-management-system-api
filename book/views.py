@@ -14,6 +14,11 @@ def HomePage(request):
     return JsonResponse({"message": "Welcome to the Book API!"})
 
 
-class BookListView(generics.ListAPIView):
+class BookListCreateView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+
+class BookCreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
