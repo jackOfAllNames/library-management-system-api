@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import HomePage
+from .views import HomePage, RegisterView
 from rest_framework.routers import DefaultRouter
 
 
@@ -8,5 +8,5 @@ router = DefaultRouter()
 
 urlpatterns = [
     # path('', include(router.urls)),
-    path('', HomePage, name='home'),
+    path('', RegisterView.as_view(), name='register'),
 ]
