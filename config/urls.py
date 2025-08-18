@@ -21,5 +21,6 @@ from book.views import HomePage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePage, name='home'),
-    path('api/', include('book.urls')),
+    path('api/books/', include('book.urls')),
+    path('api/users/', include('user.urls')),
 ]

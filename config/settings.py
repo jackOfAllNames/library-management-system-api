@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'book',
+    'user',
 ]
 
 MIDDLEWARE = [
