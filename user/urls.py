@@ -8,5 +8,5 @@ router = DefaultRouter()
 
 urlpatterns = [
     # path('', include(router.urls)),
-    path('', RegisterView.as_view(), name='register'),
+    path('register/', RegisterView.as_view(), name='register'),
 ]
