@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     def to_representation(self, instance):
-        token = Token.objects.get(user=instance)
+        token, _ = Token.objects.get_or_create(user=instance)
         return {
             "user": {
                 "id": instance.id,
