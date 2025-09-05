@@ -46,11 +46,19 @@ class UserSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         # refresh = RefreshToken.for_user(instance)
-        return {
-            "id": instance.id,
-            "email": instance.email,
-            "username": instance.username,
-            "first_name": instance.first_name,
-            "last_name": instance.last_name,
-            "role": instance.role,
-        }
+        # return {
+        #     "id": instance.id,
+        #     "email": instance.email,
+        #     "username": instance.username,
+        #     "first_name": instance.first_name,
+        #     "last_name": instance.last_name,
+        #     "role": instance.role,
+        # }
+        request = self.context.get('request')
+        viewer = request.user if request else None
+        data = super().to_representation(instance)
+
+        # Only superuser can see roles
+        if not (viewer and viewer.is_superuser):
+            data.pop('role', None)
+        return data

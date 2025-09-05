@@ -11,7 +11,7 @@ router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
-    path('users/create/', RegisterView.as_view(), name='register'),
+    path('users/register/', RegisterView.as_view(), name='register'),
     # path('users/login/', obtain_auth_token, name='login'),
     path('users/login/', TokenObtainPairView.as_view(), name='login'),
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
