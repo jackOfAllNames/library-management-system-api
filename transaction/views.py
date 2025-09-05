@@ -20,3 +20,7 @@ def checkout_book(request, book_id):
     if book.available_copies < 1:
         return Response({"error": "No copies available"}, status=status.HTTP_400_BAD_REQUEST)
     
+    book.available_copies -= 1
+    book.save()
+
+    return Response({"message": f"Book '{book.title}' checked out successfully"}, status=status.HTTP_200_OK)    
