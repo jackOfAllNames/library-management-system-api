@@ -4,6 +4,7 @@ from .serializers import BookSerializer
 from django.http import JsonResponse
 from rest_framework import generics, viewsets
 from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class IsAdminOrReadOnly(BasePermission):
@@ -23,4 +24,6 @@ def HomePage(request):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title', 'author', 'isbn']
     permission_classes = [IsAdminOrReadOnly, IsAuthenticated]
