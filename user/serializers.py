@@ -27,22 +27,22 @@ class UserSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
-        # return user
+        return user
 
         # # Token.objects.create(user=user)
         refresh = RefreshToken.for_user(user)
         
-        return {
-            "user": {
-                "id": user.id,
-                "email": user.email,
-                "username": user.username,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "role": user.role,
-            },
-            "access_token": str(refresh.access_token),
-        }
+        # return {
+        #     "user": {
+        #         "id": user.id,
+        #         "email": user.email,
+        #         "username": user.username,
+        #         "first_name": user.first_name,
+        #         "last_name": user.last_name,
+        #         "role": user.role,
+        #     },
+        #     "access_token": str(refresh.access_token),
+        # }
 
     def to_representation(self, instance):
         # refresh = RefreshToken.for_user(instance)
