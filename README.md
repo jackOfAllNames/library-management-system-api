@@ -134,5 +134,6 @@ curl -X POST http://localhost:8000/api/transactions/return/1/ \
 API is hosted on [Render](https://library-management-system-api-w7il.onrender.com/)
 
 - Base URL: `https://library-management-system-api-w7il.onrender.com/api/`
+- Render takes some time (1-30 seconds) to wake up the server when it's been idle for a while.
 
 ---
